@@ -1,20 +1,19 @@
 package com.kashif.kmmscientists.android
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.kashif.kmmscientists.Greeting
-import android.widget.TextView
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import com.kashif.kmmscientists.android.presentation.NavGraphs
+import com.kashif.kmmscientists.android.presentation.theme.KmMScientistTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
 
-fun greet(): String {
-    return Greeting().greeting()
-}
-
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = greet()
+        setContent {
+            KmMScientistTheme {
+               DestinationsNavHost(navGraph = NavGraphs.root)
+            }
+        }
     }
 }

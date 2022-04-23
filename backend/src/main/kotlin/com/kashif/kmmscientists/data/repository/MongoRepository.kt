@@ -8,15 +8,12 @@ import com.mongodb.client.MongoDatabase
 class MongoRepository(private val database: MongoDatabase) {
 
 
-    private val scientistCollection: MongoCollection<ScientistEntity> =
-        database.getCollection(ScientistEntity::class.java.name, ScientistEntity::class.java)
+    private val scientistCollection: MongoCollection<ScientistEntity>
 
 
     init {
-//        runBlocking {
-//            scientistCollection.deleteMany(Document())
-//        }
 
+        scientistCollection =  database.getCollection(ScientistEntity::class.java.name, ScientistEntity::class.java)
 
     }
 
@@ -27,6 +24,10 @@ class MongoRepository(private val database: MongoDatabase) {
         scientistCollection.insertOne(scientist)
     }
 
-    suspend fun getAllScientists() = scientistCollection.find().toList()
+     fun getAllScientists(): List<ScientistEntity> {
+        val list =  scientistCollection.find().toList()
+
+         return list
+    }
 
 }

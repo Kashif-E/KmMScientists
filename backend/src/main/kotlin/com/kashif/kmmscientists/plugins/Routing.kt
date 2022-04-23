@@ -1,6 +1,6 @@
 package com.kashif.kmmscientists.plugins
 
-import com.kashif.kmmscientists.data.routes.scientists
+import com.kashif.kmmscientists.routes.scientists
 import io.ktor.application.*
 import io.ktor.auth.*
 import io.ktor.features.*

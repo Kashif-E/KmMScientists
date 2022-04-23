@@ -1,44 +1,26 @@
 package com.kashif.kmmscientists.data.entities
 
-
 import kotlinx.serialization.Contextual
 import org.bson.codecs.pojo.annotations.BsonId
+import org.bson.types.ObjectId
 
 
 @kotlinx.serialization.Serializable
- class ScientistEntity(
-
-    val _id: Int,
-    val name: String,
-    val fullName: String,
-    val latinizedName: String,
-    val description: String,
-    val origin: String,
-    val image: String,
-    val birthPlace: String,
-    val dob: String,
-    val dod: String,
-    var books: List<String>,
-    var titles: String = "",
-    var achievements: List<String>,
-
-    ) {
+data class ScientistEntity(
 
 
-    constructor() : this(
-        0,
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        emptyList<String>(),
-        "",
-        emptyList<String>()
+    var id: Int? = 0,
+    val name: String? = "",
+    val fullName: String? = "",
+    val latinizedName: String? = "",
+    val description: String? = "",
+    val origin: String? = "",
+    val image: String? = "",
+    val birthPlace: String? = "",
+    val dob: String? = "",
+    val dod: String? = "",
+    var books: List<String>? = emptyList(),
+    var titles: String? = "",
+    var achievements: List<String>? = emptyList(),
 
     )
-}

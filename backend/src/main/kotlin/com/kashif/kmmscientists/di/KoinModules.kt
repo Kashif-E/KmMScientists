@@ -6,6 +6,7 @@ import com.mongodb.MongoClientSettings
 import com.mongodb.client.MongoClients
 import org.bson.codecs.configuration.CodecRegistries.fromProviders
 import org.bson.codecs.configuration.CodecRegistries.fromRegistries
+import org.bson.codecs.configuration.CodecRegistry
 import org.bson.codecs.pojo.PojoCodecProvider
 import org.koin.dsl.module
 
@@ -17,7 +18,6 @@ val AppModules = module {
 
 
     single {
-
         MongoClients.create(
             MongoClientSettings.builder()
                 .codecRegistry(
@@ -25,8 +25,10 @@ val AppModules = module {
                         MongoClientSettings.getDefaultCodecRegistry(),
                         fromProviders(PojoCodecProvider.builder().automatic(true).build())
                     )
-                ).build()
+                )
+                .build()
         ).getDatabase(DATABASE)
+
     }
 
 }

@@ -1,0 +1,1 @@
+curl "localhost:8080/all?origin=Arab"

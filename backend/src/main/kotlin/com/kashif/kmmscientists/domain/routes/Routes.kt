@@ -1,8 +1,8 @@
-package com.kashif.kmmscientists.routes
+package com.kashif.kmmscientists.domain.routes
 
-import com.kashif.kmmscientists.data.entities.Status
-import com.kashif.kmmscientists.data.entities.ScientistEntity
-import com.kashif.kmmscientists.data.repository.MongoRepository
+import com.kashif.kmmscientists.data.local.entities.Status
+import com.kashif.kmmscientists.data.local.entities.ScientistEntity
+import com.kashif.kmmscientists.data.repository.Repository
 
 import com.kashif.kmmscientists.domain.locations.AllScientist
 import com.kashif.kmmscientists.domain.locations.ScientistById
@@ -26,7 +26,7 @@ import org.koin.ktor.ext.inject
 
 fun Route.scientists() {
 
-    val repository: MongoRepository by inject()
+    val repository: Repository by inject()
 
 
 
@@ -63,25 +63,18 @@ fun Route.scientists() {
     get<ScientistOrigin> {
 
         call.respond(
-//            localRepository.getScientistsByOrigin(
-//                it.origin
-//            )
-            repository.getAllScientists()
+
+            repository.getScientistByOrigin(origin = it.origin)
         )
     }
     get<ScientistById> {
-        repository.getAllScientists()
-//        localRepository.getScientistById(
-//            it.id
-//        )?.let { scientist ->
-//            call.respond(
-//                listOf(scientist)
-//            )
-//        } ?: run {
-//            call.respond(
-//                emptyList<Scientist>()
-//            )
-//        }
+
+        call.respond(
+            repository.getScientistById(
+                it.id
+            )
+        )
+
 
     }
 

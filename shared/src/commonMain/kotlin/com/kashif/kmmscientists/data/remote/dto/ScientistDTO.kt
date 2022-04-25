@@ -1,13 +1,8 @@
-package com.kashif.kmmscientists.data.entities
-
-import kotlinx.serialization.Contextual
-import org.bson.codecs.pojo.annotations.BsonId
-import org.bson.types.ObjectId
+package com.kashif.kmmscientists.data.remote.dto
 
 
 @kotlinx.serialization.Serializable
-data class ScientistEntity(
-
+data class ScientistDTO(
 
     var id: Int? = 0,
     val name: String? = "",

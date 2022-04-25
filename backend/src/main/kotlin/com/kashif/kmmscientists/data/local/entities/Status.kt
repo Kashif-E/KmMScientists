@@ -1,4 +1,4 @@
-package com.kashif.kmmscientists.data.entities
+package com.kashif.kmmscientists.data.local.entities
 
 @kotlinx.serialization.Serializable
 data class Status(

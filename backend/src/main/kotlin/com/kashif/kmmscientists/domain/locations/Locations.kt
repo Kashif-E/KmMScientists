@@ -1,7 +1,7 @@
 package com.kashif.kmmscientists.domain.locations
 
 
-import com.kashif.kmmscientists.data.entities.ScientistEntity
+import com.kashif.kmmscientists.data.local.entities.ScientistEntity
 import io.ktor.locations.*
 
 

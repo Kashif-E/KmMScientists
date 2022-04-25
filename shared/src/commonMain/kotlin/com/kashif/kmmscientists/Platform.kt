@@ -1,5 +1,10 @@
 package com.kashif.kmmscientists
 
-expect class Platform() {
-    val platform: String
-}
+import org.koin.core.module.Module
+
+expect fun platformModule(): Module
+
+
+
+
+

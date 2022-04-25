@@ -16,9 +16,9 @@ fun Application.configureRouting() {
         trace { application.log.trace(it.buildText()) }
 
 
-        authenticate("api-key") {
+     //   authenticate("api-key") {
             scientists()
-        }
+    //    }
 
 
         // Static plugin. Try to access `/static/index.html`

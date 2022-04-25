@@ -4,12 +4,15 @@ import com.kashif.kmmscientists.data.remote.dto.ScientistDTO
 import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.request.*
+import io.ktor.http.*
+import io.ktor.http.HttpHeaders.ContentType
 
 class ScientistServiceImpl(private val httpClient: HttpClient) : AbstractScientistService {
     override suspend fun getAllScientists(): List<ScientistDTO> {
 
         return try {
             httpClient.get<List<ScientistDTO>> {
+                contentType(io.ktor.http.ContentType.Application.Json)
                 url(Routes.SCIENTISTS)
             }
         } catch (e: RedirectResponseException) {

@@ -1,21 +1,17 @@
 package com.kashif.kmmscientists.data.repository
 
 import com.kashif.kmmscientists.data.entities.ScientistEntity
-import com.mongodb.client.MongoCollection
-import com.mongodb.client.MongoDatabase
+import com.kashif.kmmscientists.domain.Constants
+import io.netty.util.Constant
+import org.litote.kmongo.coroutine.CoroutineDatabase
+import org.litote.kmongo.coroutine.coroutine
+import org.litote.kmongo.reactivestreams.KMongo
+
+class MongoRepository(private val database: CoroutineDatabase) {
 
 
-class MongoRepository(private val database: MongoDatabase) {
 
-
-    private val scientistCollection: MongoCollection<ScientistEntity>
-
-
-    init {
-
-        scientistCollection =  database.getCollection(ScientistEntity::class.java.name, ScientistEntity::class.java)
-
-    }
+    val  scientistCollection = database.getCollection<ScientistEntity>()
 
     suspend fun addScientist(scientist: ScientistEntity) {
 
@@ -24,7 +20,7 @@ class MongoRepository(private val database: MongoDatabase) {
         scientistCollection.insertOne(scientist)
     }
 
-     fun getAllScientists(): List<ScientistEntity> {
+     suspend fun getAllScientists(): List<ScientistEntity> {
         val list =  scientistCollection.find().toList()
 
          return list

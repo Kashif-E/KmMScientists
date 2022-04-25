@@ -41,7 +41,7 @@ dependencies {
 
 
 
-    implementation("org.mongodb:mongodb-driver:3.12.10")
+    implementation("org.litote.kmongo:kmongo-coroutine:4.5.1")
 
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")

@@ -4,7 +4,6 @@ import kotlinx.serialization.Contextual
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
 
-
 @kotlinx.serialization.Serializable
 data class ScientistEntity(
 

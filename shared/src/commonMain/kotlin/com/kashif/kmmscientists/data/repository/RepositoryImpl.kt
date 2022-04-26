@@ -10,9 +10,7 @@ import com.kashif.kmmscientists.data.remote.dto.asDomainModel
 import com.kashif.kmmscientists.data.remote.dto.asEntity
 import com.kashif.kmmscientists.domain.util.CommonFlow
 import com.kashif.kmmscientists.domain.util.asCommonFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.*
 
 class RepositoryImpl(
     private val serviceImpl: ScientistServiceImpl,
@@ -21,38 +19,23 @@ class RepositoryImpl(
 ) : AbstractRepository() {
 
 
-    fun getAllScientists(): CommonFlow<DataState<List<ScientistDomainModel>>> =
-        flow<DataState<List<ScientistDomainModel>>> {
+    override fun getAllScientists(): CommonFlow<DataState<List<ScientistDomainModel>>> =
+        channelFlow<DataState<List<ScientistDomainModel>>> {
 
-            realmServiceImpl.getAllScientists().collectLatest { resultsChange ->
+            realmServiceImpl.getAllScientists().collect { resultsChange ->
                 if (resultsChange.list.isEmpty()) {
-                    serviceImpl.getAllScientists().collect { dataState ->
+                    println("===> empty")
+                    getDataFromRemoteService { message ->
 
-                        when (dataState) {
-                            is DataState.Success -> {
-                                realmServiceImpl.insertScientistsToRealm(
-                                    dataState.data?.asEntity() ?: emptyList()
-                                )
-                            }
-                            is DataState.Error -> {
-                                emit(
-                                    responseHandler.handleException(
-                                        dataState.error
-                                    )
-                                )
-                            }
-                            else -> {
-                                emit(
-                                    responseHandler.handleException(
-                                        dataState.error
-                                    )
-                                )
-                            }
-                        }
+                        send(
+                            responseHandler.handleException(message)
+                        )
+
 
                     }
                 } else {
-                    emit(
+                    println("==> full")
+                    send(
                         responseHandler.handleSuccess(
                             resultsChange.list.asDomainModel()
                         )
@@ -63,4 +46,31 @@ class RepositoryImpl(
 
         }.asCommonFlow()
 
+    private suspend fun getDataFromRemoteService(onError: suspend (message: DataState.Message) -> Unit) {
+        serviceImpl.getAllScientists().collect { dataState ->
+
+            when (dataState) {
+                is DataState.Success -> {
+                    realmServiceImpl.insertScientistsToRealm(
+                        dataState.data?.asEntity() ?: emptyList()
+                    )
+                }
+                is DataState.Error -> {
+
+                    onError(
+                        dataState.error
+                    )
+                }
+                else -> {
+                    onError(
+                        dataState.error
+                    )
+                }
+            }
+
+        }
+    }
+
 }
+
+

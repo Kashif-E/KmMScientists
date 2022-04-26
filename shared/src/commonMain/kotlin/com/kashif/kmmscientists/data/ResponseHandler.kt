@@ -1,5 +1,10 @@
 package com.kashif.kmmscientists.data
 
+import java.net.ConnectException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
+import java.util.concurrent.TimeoutException
+
 
 enum class ErrorCodes(val code: Int) {
     SocketTimeOut(-1),
@@ -21,8 +26,21 @@ open class ResponseHandler {
 
     fun <T : Any> handleException(e: Exception): DataState<T> {
 
+//        when(e){
+//
+//           is TimeoutException -> DataState.Message.Timeout
+//            // is ConnectivityInterceptor.NoNetworkException -> Resource.CustomMessages.NoInternet
+//            is UnknownHostException -> DataState.Message.ServerBusy
+//            is ConnectException -> DataState.Message.NoInternet
+//            is SocketTimeoutException -> DataState.Message.SocketTimeOutException
+//            else -> DataState.CustomMessages.GenericMessage(getErrorMessage(throwable.cause))
+//        }
 
-        return DataState.Error(DataState.Message.NoInternet)
+        return DataState.Error(
+            DataState.Message.GenericMessage(
+                e.message ?: "Something went wrong"
+            )
+        )
     }
 
     fun <T : Any> handleException(message: DataState.Message): DataState<T> {

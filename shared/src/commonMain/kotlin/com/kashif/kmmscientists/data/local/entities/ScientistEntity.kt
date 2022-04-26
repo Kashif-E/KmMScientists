@@ -3,25 +3,25 @@ package com.kashif.kmmscientists.data.local.entities
 import com.kashif.kmmscientists.domain.domain_model.ScientistDomainModel
 import io.realm.RealmObject
 
-data class ScientistEntity(
+class ScientistDatabaseModel() : RealmObject {
+    var id: Int = 0
+    var name: String = ""
+    var fullName: String = ""
+    var latinizedName: String = ""
+    var description: String = ""
+    var origin: String = ""
+    var image: String = ""
+    var birthPlace: String = ""
+    var dob: String = ""
+    var dod: String = ""
+    var books: String = ""
+    var titles: String = ""
+    var achievements: String = ""
 
-    val id: Int?,
-    val name: String?,
-    val fullName: String?,
-    val latinizedName: String?,
-    val description: String?,
-    val origin: String?,
-    val image: String?,
-    val birthPlace: String?,
-    val dob: String?,
-    val dod: String?,
-    val books: List<String>?,
-    val titles: String?,
-    val achievements: List<String>?
 
-) : RealmObject
+}
 
-fun ScientistEntity.asDomainModel() = ScientistDomainModel(
+fun ScientistDatabaseModel.asDomainModel() = ScientistDomainModel(
     id,
     name,
     fullName,
@@ -32,9 +32,13 @@ fun ScientistEntity.asDomainModel() = ScientistDomainModel(
     birthPlace,
     dob,
     dod,
-    books,
+    books.split(','),
     titles,
-    achievements
+    achievements.split(',')
 )
 
-fun List<ScientistEntity>.asDomainModel() = map { it.asDomainModel() }
+fun List<ScientistDatabaseModel>.asDomainModel(): List<ScientistDomainModel>? {
+    return map {
+        it.asDomainModel()
+    }
+}

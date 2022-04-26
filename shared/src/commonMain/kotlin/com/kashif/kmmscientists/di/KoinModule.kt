@@ -1,15 +1,11 @@
 package com.kashif.kmmscientists.di
 
 import com.kashif.kmmscientists.data.ResponseHandler
-import com.kashif.kmmscientists.data.local.entities.ScientistEntity
 import com.kashif.kmmscientists.data.local.realm_service.RealmServiceImpl
-import com.kashif.kmmscientists.data.remote.scientists_service.AbstractScientistService
 import com.kashif.kmmscientists.data.remote.scientists_service.ScientistServiceImpl
 import com.kashif.kmmscientists.data.repository.RepositoryImpl
 import com.kashif.kmmscientists.domain.usecase.GetAllScientistUseCase
 import com.kashif.kmmscientists.platformModule
-import io.realm.Realm
-import io.realm.RealmConfiguration
 import kotlinx.serialization.json.Json
 import org.koin.core.Koin
 import org.koin.core.context.startKoin
@@ -32,6 +28,9 @@ fun initKoin() = initKoin() {}
 fun commonModule() = module {
 
     single {
+        RealmServiceImpl()
+    }
+    single {
         ScientistServiceImpl(get(), get())
     }
     single {
@@ -40,19 +39,9 @@ fun commonModule() = module {
     single {
         RepositoryImpl(get(), get(), get())
     }
-    single {
 
-        Realm.open(
-            RealmConfiguration.Builder(schema = setOf(ScientistEntity::class))
-                .build()
-        )
-    }
 
-    single {
-        RealmServiceImpl(
-            get()
-        )
-    }
+
     //usecase
     single {
         GetAllScientistUseCase(get())

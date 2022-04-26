@@ -19,7 +19,7 @@ class HomeViewModel(
     private fun getAllScientists() {
         viewModelScope.launch(Dispatchers.IO) {
 
-            getAllScientistUseCase.invoke().collectCommon { dataState ->
+            getAllScientistUseCase.invoke().collectCommon(viewModelScope, { dataState ->
 
                 when (dataState) {
                     is DataState.Success -> {
@@ -35,7 +35,12 @@ class HomeViewModel(
                     }
                 }
 
-            }
+
+            }, { error ->
+
+                print(error.toString())
+
+            })
 
         }
     }

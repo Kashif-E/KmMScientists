@@ -5,5 +5,5 @@ import com.kashif.kmmscientists.domain.util.asCommonFlow
 
 class GetAllScientistUseCase(private val repositoryImpl: RepositoryImpl) {
 
-     operator fun invoke() = repositoryImpl.getAllScientists().asCommonFlow()
+     operator fun invoke() = repositoryImpl.getAllScientists()
 }

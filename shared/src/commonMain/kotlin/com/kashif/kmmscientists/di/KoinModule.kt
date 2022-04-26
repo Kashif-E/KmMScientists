@@ -5,6 +5,7 @@ import com.kashif.kmmscientists.data.local.realm_service.RealmServiceImpl
 import com.kashif.kmmscientists.data.remote.scientists_service.ScientistServiceImpl
 import com.kashif.kmmscientists.data.repository.RepositoryImpl
 import com.kashif.kmmscientists.domain.usecase.GetAllScientistUseCase
+import com.kashif.kmmscientists.domain.usecase.GetScientistsByOriginUseCase
 import com.kashif.kmmscientists.platformModule
 import kotlinx.serialization.json.Json
 import org.koin.core.Koin
@@ -23,7 +24,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     }
 
 
-fun initKoin() = initKoin() {}
+fun initKoin() = initKoin {}
 
 fun commonModule() = module {
 
@@ -40,7 +41,9 @@ fun commonModule() = module {
         RepositoryImpl(get(), get(), get())
     }
 
-
+    single {
+        GetScientistsByOriginUseCase(get())
+    }
 
     //usecase
     single {

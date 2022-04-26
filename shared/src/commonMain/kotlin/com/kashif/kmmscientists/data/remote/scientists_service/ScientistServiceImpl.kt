@@ -55,13 +55,13 @@ class ScientistServiceImpl(
                 )
             )
         }
-    }.flowOn(Dispatchers.Default)
+    }
 
-    override suspend fun getScientistsByOrigin() = flow {
+    override suspend fun getScientistsByOrigin(origin: String) = flow {
         try {
             val scientistList = httpClient.get<List<ScientistDTO>> {
                 url(Routes.SCIENTISTS) {
-                    parameter("origin", "Arab")
+                    parameter("origin", origin)
                 }
 
             }
@@ -90,5 +90,5 @@ class ScientistServiceImpl(
                 )
             )
         }
-    }.flowOn(Dispatchers.Default)
+    }
 }

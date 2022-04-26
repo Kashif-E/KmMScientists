@@ -8,5 +8,5 @@ interface AbstractScientistService {
 
     fun getAllScientists() : Flow<DataState<List<ScientistDTO>>>
 
-    suspend fun getScientistsByOrigin() : Flow<DataState<List<ScientistDTO>>>
+    suspend fun getScientistsByOrigin(origin: String): Flow<DataState<List<ScientistDTO>>>
 }

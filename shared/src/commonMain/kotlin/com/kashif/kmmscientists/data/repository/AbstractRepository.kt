@@ -6,4 +6,5 @@ import com.kashif.kmmscientists.domain.util.CommonFlow
 
 abstract class AbstractRepository {
     abstract fun getAllScientists(): CommonFlow<DataState<List<ScientistDomainModel>>>
+    abstract fun getScientistBasedOnOrigin(origin: String): CommonFlow<DataState<out Any>>
 }

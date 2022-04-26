@@ -7,6 +7,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,6 +25,7 @@ fun Home(
     viewModel: HomeViewModel = get()
 ) {
 
+    val state by  viewModel.list.collectAsState()
     Scaffold {
         Column(modifier = Modifier.padding(12.dp)) {
 
@@ -32,6 +35,12 @@ fun Home(
                 color = MaterialTheme.colors.primaryVariant
             )
             LazyColumn(content = {
+                
+                item { 
+                    state.forEach { 
+                        Text(text = it.fullName?:"")
+                    }
+                }
 
             })
 

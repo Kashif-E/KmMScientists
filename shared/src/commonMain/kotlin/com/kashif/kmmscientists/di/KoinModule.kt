@@ -1,7 +1,10 @@
 package com.kashif.kmmscientists.di
 
+import com.kashif.kmmscientists.data.ResponseHandler
 import com.kashif.kmmscientists.data.remote.scientists_service.AbstractScientistService
 import com.kashif.kmmscientists.data.remote.scientists_service.ScientistServiceImpl
+import com.kashif.kmmscientists.data.repository.RepositoryImpl
+import com.kashif.kmmscientists.domain.usecase.GetAllScientistUseCase
 import com.kashif.kmmscientists.platformModule
 import kotlinx.serialization.json.Json
 import org.koin.core.Koin
@@ -25,7 +28,17 @@ fun initKoin() = initKoin() {}
 fun commonModule() = module {
 
     single {
-        ScientistServiceImpl(get())
+        ScientistServiceImpl(get(), get())
+    }
+    single {
+        ResponseHandler()
+    }
+    single {
+        RepositoryImpl(get(), get())
+    }
+    //usecase
+    single {
+        GetAllScientistUseCase(get())
     }
 }
 

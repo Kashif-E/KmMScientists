@@ -1,61 +1,94 @@
 package com.kashif.kmmscientists.data.remote.scientists_service
 
 import com.kashif.kmmscientists.data.remote.dto.ScientistDTO
+import com.kashif.kmmscientists.data.DataState
+import com.kashif.kmmscientists.data.ResponseHandler
 import io.ktor.client.*
 import io.ktor.client.features.*
 import io.ktor.client.request.*
 import io.ktor.http.*
-import io.ktor.http.HttpHeaders.ContentType
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
-class ScientistServiceImpl(private val httpClient: HttpClient) : AbstractScientistService {
-    override suspend fun getAllScientists(): List<ScientistDTO> {
+class ScientistServiceImpl(
+    private val httpClient: HttpClient,
+    private val responseHandler: ResponseHandler
+) : AbstractScientistService {
+    override fun getAllScientists() = flow {
 
-        return try {
-            httpClient.get<List<ScientistDTO>> {
-                contentType(io.ktor.http.ContentType.Application.Json)
+        try {
+            val scientistList = httpClient.get<List<ScientistDTO>> {
+                contentType(ContentType.Application.Json)
                 url(Routes.SCIENTISTS)
             }
+            emit(responseHandler.handleSuccess(scientistList))
         } catch (e: RedirectResponseException) {
             // 3xx - responses
             println("Error: ${e.response.status.description}")
-            emptyList()
+            emit(
+                responseHandler.handleException(
+                    DataState.Message.RedirectResponseException
+                )
+            )
         } catch (e: ClientRequestException) {
             // 4xx - responses
             println("Error: ${e.response.status.description}")
-            emptyList()
+            emit(
+                responseHandler.handleException(
+                    DataState.Message.RedirectResponseException
+                )
+            )
         } catch (e: ServerResponseException) {
             // 5xx - responses
             println("Error: ${e.response.status.description}")
-            emptyList()
+            emit(
+                responseHandler.handleException(
+                    DataState.Message.RedirectResponseException
+                )
+            )
         } catch (e: Exception) {
             println("Error: ${e.message}")
-            emptyList()
+            emit(
+                responseHandler.handleException(
+                    e
+                )
+            )
         }
-    }
+    }.flowOn(Dispatchers.Default)
 
-    override suspend fun getScientistsByOrigin(): List<ScientistDTO> {
-        return try {
-            httpClient.get<List<ScientistDTO>> {
+    override suspend fun getScientistsByOrigin() = flow {
+        try {
+            val scientistList = httpClient.get<List<ScientistDTO>> {
                 url(Routes.SCIENTISTS) {
                     parameter("origin", "Arab")
                 }
 
             }
-        } catch (e: RedirectResponseException) {
-            // 3xx - responses
-            println("Error: ${e.response.status.description}")
-            emptyList()
+            emit(responseHandler.handleSuccess(scientistList))
         } catch (e: ClientRequestException) {
             // 4xx - responses
             println("Error: ${e.response.status.description}")
-            emptyList()
+            emit(
+                responseHandler.handleException(
+                    DataState.Message.RedirectResponseException
+                )
+            )
         } catch (e: ServerResponseException) {
             // 5xx - responses
             println("Error: ${e.response.status.description}")
-            emptyList()
+            emit(
+                responseHandler.handleException(
+                    DataState.Message.RedirectResponseException
+                )
+            )
         } catch (e: Exception) {
             println("Error: ${e.message}")
-            emptyList()
+            emit(
+                responseHandler.handleException(
+                    e
+                )
+            )
         }
-    }
+    }.flowOn(Dispatchers.Default)
 }

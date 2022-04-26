@@ -1,4 +1,4 @@
-package com.kashif.kmmscientists.android
+package com.kashif.kmmscientists.android.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -15,19 +15,13 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
-    val service: ScientistServiceImpl by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             KmMScientistTheme {
                 DestinationsNavHost(navGraph = NavGraphs.root)
             }
-        }
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val x = service.getAllScientists()
-
-            Log.e("sci", x.toString())
         }
     }
 }

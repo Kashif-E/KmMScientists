@@ -3,7 +3,7 @@ plugins {
     kotlin(KotlinPlugins.cocoapods)
     id("com.android.library")
     kotlin(KotlinPlugins.serialization) version Kotlin.version
-  //  KotlinPlugins
+    id(Realm.pluginId)
 }
 
 version = "1.0"
@@ -33,6 +33,7 @@ kotlin {
                 implementation(Kotlinx.datetime)
                 implementation(Koin.koin)
                 implementation(Ktor.ktorLogging)
+                implementation(Realm.realm)
 
                 implementation(Coroutines.native_coroutines)
 
@@ -65,7 +66,6 @@ kotlin {
         val iosMain by creating {
             dependencies {
                 implementation(Ktor.ios)
-
 
 
             }

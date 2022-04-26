@@ -1,5 +1,6 @@
 package com.kashif.kmmscientists.data.remote.dto
 
+import com.kashif.kmmscientists.data.local.entities.ScientistEntity
 import com.kashif.kmmscientists.domain.domain_model.ScientistDomainModel
 import kotlinx.serialization.Serializable
 
@@ -40,3 +41,22 @@ fun ScientistDTO.asDomainModel() = ScientistDomainModel(
 )
 
 fun List<ScientistDTO>.asDomainModel() = map { it.asDomainModel() }
+fun List<ScientistDTO>.asEntity() = map { it.asEntity() }
+
+fun ScientistDTO.asEntity() = ScientistEntity(
+    id,
+    name,
+    fullName,
+    latinizedName,
+    description,
+    origin,
+    image,
+    birthPlace,
+    dob,
+    dod,
+    books,
+    titles,
+    achievements
+)
+
+

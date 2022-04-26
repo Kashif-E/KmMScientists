@@ -34,8 +34,8 @@ kotlin {
                 implementation(Koin.koin)
                 implementation(Ktor.ktorLogging)
                 implementation(Realm.realm)
-
-                implementation(Coroutines.native_coroutines)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt")
+            //    implementation(Coroutines.native_coroutines)
 
 
             }

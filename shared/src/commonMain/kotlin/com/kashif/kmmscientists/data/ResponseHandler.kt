@@ -1,9 +1,6 @@
 package com.kashif.kmmscientists.data
 
-import java.net.ConnectException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
-import java.util.concurrent.TimeoutException
+
 
 
 enum class ErrorCodes(val code: Int) {

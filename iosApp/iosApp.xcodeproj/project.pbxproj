@@ -10,6 +10,8 @@
 		04BBFBA528186C890023B712 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBFBA428186C890023B712 /* Home.swift */; };
 		04BBFBA728186CA80023B712 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBFBA628186CA80023B712 /* HomeViewModel.swift */; };
 		04BBFBAA28186F3A0023B712 /* KoinModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBFBA928186F3A0023B712 /* KoinModule.swift */; };
+		04BBFBAE281899CA0023B712 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBFBAD281899CA0023B712 /* Extensions.swift */; };
+		04BBFBB028189EFC0023B712 /* Corousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBFBAF28189EFC0023B712 /* Corousel.swift */; };
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
@@ -21,6 +23,8 @@
 		04BBFBA428186C890023B712 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		04BBFBA628186CA80023B712 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		04BBFBA928186F3A0023B712 /* KoinModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoinModule.swift; sourceTree = "<group>"; };
+		04BBFBAD281899CA0023B712 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		04BBFBAF28189EFC0023B712 /* Corousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corousel.swift; sourceTree = "<group>"; };
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		115812B71D89725C04AA35B2 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 			children = (
 				04BBFBA428186C890023B712 /* Home.swift */,
 				04BBFBA628186CA80023B712 /* HomeViewModel.swift */,
+				04BBFBAF28189EFC0023B712 /* Corousel.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -59,6 +64,22 @@
 				04BBFBA928186F3A0023B712 /* KoinModule.swift */,
 			);
 			path = Di;
+			sourceTree = "<group>";
+		};
+		04BBFBAB281899920023B712 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				04BBFBAC281899A00023B712 /* Utils */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		04BBFBAC281899A00023B712 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				04BBFBAD281899CA0023B712 /* Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		058557D7273AAEEB004C7B11 /* Preview Content */ = {
@@ -107,6 +128,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				04BBFBAB281899920023B712 /* Domain */,
 				04BBFBA828186F270023B712 /* Di */,
 				04BBFBA328186C6D0023B712 /* Presentation */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -215,10 +237,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				04BBFBAE281899CA0023B712 /* Extensions.swift in Sources */,
 				04BBFBA528186C890023B712 /* Home.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				04BBFBA728186CA80023B712 /* HomeViewModel.swift in Sources */,
 				04BBFBAA28186F3A0023B712 /* KoinModule.swift in Sources */,
+				04BBFBB028189EFC0023B712 /* Corousel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +300,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -331,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -354,7 +378,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kmMScientists.iosApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,7 +398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
+				PRODUCT_BUNDLE_IDENTIFIER = kmMScientists.iosApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

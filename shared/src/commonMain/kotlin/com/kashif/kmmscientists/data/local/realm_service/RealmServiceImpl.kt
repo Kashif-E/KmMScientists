@@ -8,11 +8,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 
-class RealmServiceImpl() : AbstractRealmService {
+class RealmServiceImpl(private val realm: Realm) : AbstractRealmService {
 
-    val config = RealmConfiguration.Builder(schema = setOf(ScientistDatabaseModel::class))
-        .build()
-    val realm: Realm = Realm.open(config)
 
     fun insertScientistsToRealm(scientists: List<ScientistDatabaseModel>) {
 

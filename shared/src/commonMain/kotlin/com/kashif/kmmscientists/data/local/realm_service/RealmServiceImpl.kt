@@ -11,7 +11,7 @@ import kotlinx.coroutines.async
 class RealmServiceImpl(private val realm: Realm) : AbstractRealmService {
 
 
-    fun insertScientistsToRealm(scientists: List<ScientistDatabaseModel>) {
+  override  fun insertScientistsToRealm(scientists: List<ScientistDatabaseModel>) {
 
         CoroutineScope(Dispatchers.Default).async {
             scientists.forEach { scientist ->
@@ -26,8 +26,8 @@ class RealmServiceImpl(private val realm: Realm) : AbstractRealmService {
 
     }
 
-    fun getScientistByOrigin(origin: String) =
+   override fun getScientistByOrigin(origin: String) =
         realm.query<ScientistDatabaseModel>("origin == $origin").find().asFlow()
 
-    fun getAllScientists() = realm.query<ScientistDatabaseModel>().find().asFlow()
+   override fun getAllScientists() = realm.query<ScientistDatabaseModel>().find().asFlow()
 }

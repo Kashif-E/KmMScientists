@@ -12,6 +12,7 @@ import SwiftUI
 
 import SwiftUI
 
+
 extension View {
     /// Navigate to a new view.
     /// - Parameters:
@@ -28,7 +29,7 @@ extension View {
                     destination: view
                         .navigationBarTitle("")
                         .navigationBarTitleDisplayMode(.inline)
-                        .navigationBarHidden(bar).foregroundColor(Color("GlobalGreen")),
+                        .navigationBarHidden(bar).foregroundColor(Color.black),
                     isActive: binding
                 ) {
                     EmptyView()
@@ -41,7 +42,7 @@ extension View {
 extension Image {
     
     func imageModifier() -> some View{
-        self.resizable().scaledToFit().transition(.scale)
+        self.resizable().scaledToFit()
             
             //.transition(.move(edge: .bottom))
     }

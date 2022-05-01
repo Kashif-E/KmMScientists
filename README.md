@@ -17,7 +17,7 @@ KmMScientists is a **Kotlin multiplatform app** built with swift ui, jetpack com
 * Android UI is built with jetpack compose
 * IOS UI is built with Swift ui
 
-##Screen Shots
+#Screen Shots
 
 |Platform|Screenshot|
 |---|---|

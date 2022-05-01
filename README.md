@@ -2,7 +2,7 @@
 
 KmMScientists is a **Kotlin multiplatform app** built with swift ui, jetpack compose, koin and realm.
 
-#Whats Shared?
+# Whats Shared?
 * Local Data Persistence with Realm
 * Remote Data with KTOR
 * Repository
@@ -13,11 +13,11 @@ KmMScientists is a **Kotlin multiplatform app** built with swift ui, jetpack com
 * Kotlin Flow
 
 
-#UI
+# UI
 * Android UI is built with jetpack compose
 * IOS UI is built with Swift ui
 
-#Screen Shots
+# Screen Shots
 
 |Platform|Screenshot|
 |---|---|

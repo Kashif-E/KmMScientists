@@ -10,6 +10,8 @@ KmMScientists is a **Kotlin multiplatform app** built with swift ui, jetpack com
 * Models
 * Kotlin Parcelable Implementation
 * Dependency Injection with koin on both IOS and Android
+* Kotlin Flow
+
 
 #UI
 * Android UI is built with jetpack compose

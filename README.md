@@ -21,8 +21,8 @@ KmMScientists is a **Kotlin multiplatform app** built with swift ui, jetpack com
 
 |Platform|Screenshot|
 |---|---|
+|Android|<img src="/screenshots/android 2.png?raw=true" width=300/>|
 |Android|<img src="/screenshots/android1.png?raw=true" width=300/>|
-|Android|<img src="/screenshots/android2.png?raw=true" width=300/>|
 |IOS|<img src="/screenshots/ios 1.png?raw=true" width=300/>|
 |IOS|<img src="/screenshots/ios2.png?raw=true" width=300/>|
 

@@ -1,5 +1,6 @@
 package com.kashif.kmmscientists
 
+import android.os.Parcelable
 import android.util.Log
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
@@ -8,8 +9,13 @@ import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.features.observer.*
+import kotlinx.parcelize.Parcelize
 import org.koin.dsl.module
 
+
+actual typealias CommonParcelize = Parcelize
+
+actual typealias CommonParcelable = Parcelable
 actual fun platformModule() = module {
 
 

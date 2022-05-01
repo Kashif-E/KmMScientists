@@ -59,3 +59,5 @@ actual fun platformModule() = module {
 fun <T> Koin.getDependency(objCClass: ObjCClass): T? = getOriginalKotlinClass(objCClass)?.let {
     getDependency(it)
 }
+
+actual interface CommonParcelable

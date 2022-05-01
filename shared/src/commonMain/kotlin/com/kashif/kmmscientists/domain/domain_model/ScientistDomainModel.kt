@@ -1,5 +1,10 @@
 package com.kashif.kmmscientists.domain.domain_model
 
+import com.kashif.kmmscientists.CommonParcelable
+import com.kashif.kmmscientists.CommonParcelize
+
+
+@CommonParcelize
 data class ScientistDomainModel(
 
     val id: Int? ,
@@ -16,4 +21,4 @@ data class ScientistDomainModel(
     val titles: String?,
     val achievements: List<String>?
 
-)
+): CommonParcelable

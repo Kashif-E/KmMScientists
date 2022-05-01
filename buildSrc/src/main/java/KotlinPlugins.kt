@@ -4,4 +4,5 @@ object KotlinPlugins {
     const val cocoapods = "native.cocoapods"
     const val serialization = "plugin.serialization"
     const val kapt = "kapt"
+    const val parcelize = "kotlin-parcelize"
 }

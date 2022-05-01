@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     kotlin(KotlinPlugins.serialization) version Kotlin.version
     id(Realm.pluginId)
+    id(KotlinPlugins.parcelize)
 }
 
 version = "1.0"
@@ -87,6 +88,7 @@ kotlin {
 }
 
 android {
+
     compileSdk = 31
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {

@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     id("com.google.devtools.ksp") version "1.6.10-1.0.2"
 
+
 }
 kotlin {
     sourceSets {
@@ -32,6 +33,13 @@ android {
     buildFeatures {
         compose = true
     }
+    applicationVariants.all {
+        kotlin.sourceSets {
+            getByName(name) {
+                kotlin.srcDir("build/generated/ksp/$name/kotlin")
+            }
+        }
+    }
     packagingOptions {
         exclude("META-INF/AL2.0")
         exclude("META-INF/LGPL2.1")
@@ -51,11 +59,12 @@ dependencies {
     implementation(ComposeDestination.composeDestination)
     implementation(Compose.compiler)
     implementation(SplashScreen.splashScreen)
-    implementation(Accompanist.coil)
+    implementation(Coil.coil)
     implementation(Compose.constraintLayout)
     implementation(Shimmer.shimmer)
     implementation(ComposeDestination.core)
     ksp(ComposeDestination.composeDestinationPlugin)
+    implementation(ComposeDestination.composeDestination)
     implementation(Compose.foundation)
     implementation(Koin.koinAndroid)
     implementation(Compose.material)

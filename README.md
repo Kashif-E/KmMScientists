@@ -51,8 +51,8 @@ Steps:
 |IOS|<img src="/screenshots/ios2.png?raw=true" width=300/>|
 
 
-References: 
-Kampkit: https://github.com/touchlab/KaMPKit
-Fantasy Premiere  League: https://github.com/joreilly/FantasyPremierLeague
-Bike Share: https://github.com/joreilly/BikeShare
+# References: 
+* Kampkit: https://github.com/touchlab/KaMPKit
+* Fantasy Premiere  League: https://github.com/joreilly/FantasyPremierLeague
+* Bike Share: https://github.com/joreilly/BikeShare
 
